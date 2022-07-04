@@ -10,10 +10,12 @@
     "express": "^4"
   },
   "devDependencies": {
-    "sqlite3": "^5.0.2"
+    "@sap/ux-specification": "^1.102.0",
+    "sqlite3": "^5.0.0"
   },
   "scripts": {
-    "start": "cds run"
+    "start": "cds run",
+    "watch-uidemoks": "cds watch --open uidemoks/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
@@ -39,5 +41,8 @@
       "no-console": "off",
       "require-atomic-updates": "off"
     }
-  }
+  },
+  "sapux": [
+    "app/uidemoks"
+  ]
 }
