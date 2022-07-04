@@ -1,51 +1,61 @@
 {
-    "name": "DemoKS",
-    "version": "1.0.0",
-    "description": "A simple CAP project.",
-    "repository": "<Add your repository here>",
-    "license": "UNLICENSED",
-    "private": true,
-    "dependencies": {
-        "@sap/cds": "^5",
-        "express": "^4"
+  "name": "DemoKS",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^5",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@sap/ux-specification": "^1.102.0",
+    "sqlite3": "^5.0.0"
+  },
+  "scripts": {
+    "start": "cds run",
+    "watch-uidemoks": "cds watch --open uidemoks/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-uidemo": "cds watch --open uidemo/webapp/index.html?sap-ui-xx-viewCache=false",
+    "undeploy": "cf undeploy DemoKS --delete-services --delete-service-keys"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "es2020": true,
+      "node": true,
+      "jest": true,
+      "mocha": true
     },
-    "devDependencies": {
-        "@sap/ux-specification": "^1.102.0",
-        "sqlite3": "^5.0.0"
+    "globals": {
+      "SELECT": true,
+      "INSERT": true,
+      "UPDATE": true,
+      "DELETE": true,
+      "CREATE": true,
+      "DROP": true,
+      "CDL": true,
+      "CQL": true,
+      "CXL": true,
+      "cds": true
     },
-    "scripts": {
-        "start": "cds run",
-        "watch-uidemoks": "cds watch --open uidemoks/webapp/index.html?sap-ui-xx-viewCache=false",
-        "watch-uidemo": "cds watch --open uidemo/webapp/index.html?sap-ui-xx-viewCache=false",
-        "undeploy": "cf undeploy DemoKS --delete-services --delete-service-keys"
-    },
-    "eslintConfig": {
-        "extends": "eslint:recommended",
-        "env": {
-            "es2020": true,
-            "node": true,
-            "jest": true,
-            "mocha": true
-        },
-        "globals": {
-            "SELECT": true,
-            "INSERT": true,
-            "UPDATE": true,
-            "DELETE": true,
-            "CREATE": true,
-            "DROP": true,
-            "CDL": true,
-            "CQL": true,
-            "CXL": true,
-            "cds": true
-        },
-        "rules": {
-            "no-console": "off",
-            "require-atomic-updates": "off"
+    "rules": {
+      "no-console": "off",
+      "require-atomic-updates": "off"
+    }
+  },
+  "sapux": [
+    "app/uidemoks",
+    "app/uidemo"
+  ],
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "database": "sqlite.db"
         }
-    },
-    "sapux": [
-        "app/uidemoks",
-        "app/uidemo"
-    ]
+      }
+    }
+  }
 }
